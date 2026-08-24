@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
@@ -12,18 +11,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-
+  "bugs": {
+  },
   "devDependencies": {
     "@types/node": "^17.0.21",
-=======
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^17.0.45",
->>>>>>> 4c10c664225978d01ed4bc91916d5107990359d3
     "@types/webpack": "^5.28.0",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.2.6",
@@ -31,10 +22,5 @@
     "typescript": "^4.5.5",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
-<<<<<<< HEAD
   }
-=======
-  },
-  "type": "commonjs"
->>>>>>> 4c10c664225978d01ed4bc91916d5107990359d3
 }
