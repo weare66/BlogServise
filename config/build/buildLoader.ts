@@ -1,6 +1,8 @@
 import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BuildOptions } from './types/config';
 
-export function buildLoader(): webpack.RuleSetRule[] {
+export function buildLoader({ isDev }: BuildOptions): webpack.RuleSetRule[] {
   // Если не используем тайпскрипт -- нужен babel-loader
   const tsLoader = {
     test: /\.tsx?$/,
@@ -12,9 +14,22 @@ export function buildLoader(): webpack.RuleSetRule[] {
     test: /\.s[ac]ss$/i,
     use: [
       // Creates `style` nodes from JS strings
-      'style-loader',
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       // Translates CSS into CommonJS
-      'css-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          modules: {
+            // Включает CSS-модули только для файлов, содержащих '.module.'
+            auto: (resPath: string) => Boolean(resPath.includes('.module.')),
+            // Настройка понятных имен классов в режиме разработки
+            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
+            exportLocalsConvention: 'camelCase',
+            namedExport: false, // Отключает принудительные именованные экспорты, разрешая export default
+          },
+        },
+      },
+
       // Compiles Sass to CSS
       'sass-loader',
     ],
