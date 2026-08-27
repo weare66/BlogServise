@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BuildOptions } from './types/config';
+import path from 'path';
 
 export function buildLoader({ isDev }: BuildOptions): webpack.RuleSetRule[] {
   // Если не используем тайпскрипт -- нужен babel-loader
@@ -9,6 +10,23 @@ export function buildLoader({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     use: 'ts-loader',
     exclude: /node_modules/,
   };
+
+  // const tsLoader = {
+  //   test: /\.tsx?$/,
+  //   use: [
+  //     {
+  //       loader: 'ts-loader',
+  //       options: {
+  //         // Явно указываем конфигурационный файл
+  //         compilerOptions: {
+  //           module: 'esnext',
+  //           moduleResolution: 'node',
+  //         },
+  //       },
+  //     },
+  //   ],
+  //   exclude: /node_modules/,
+  // };
 
   const cssLoader = {
     test: /\.s[ac]ss$/i,
