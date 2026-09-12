@@ -10,6 +10,7 @@ import { AboutPageAsync } from './pages/AboutPage/AboutPage.async';
 import { Suspense } from 'react';
 import { Theme, ThemeContext } from './theme/ThemeContext';
 import { useTheme } from './theme/useTheme';
+import { calssNames } from './healpers/calssNames/calssNames';
 
 
 
@@ -28,7 +29,8 @@ import { useTheme } from './theme/useTheme';
 
 
   return (
-    <div className={`app ${theme}`}>
+    // `app ${theme}`
+    <div className={calssNames('app' , {}, [theme])}>
 
       <button onClick={toggleTheme}>++</button>
 
