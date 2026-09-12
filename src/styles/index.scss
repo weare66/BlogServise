@@ -1,0 +1,17 @@
+
+@use 'reset'; // Обнуляющий стиль
+@use 'variables/global'; // Глобальные переменные
+@use 'themes/light'; // Светлая тема
+@use 'themes/dark'; // Тёмная тема
+
+
+
+
+.app{
+    font: var(--font-m);
+
+    background: var(--bg-color);
+    color: var(--primary-color);
+
+    min-height: 100dvh;
+}
